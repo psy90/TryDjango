@@ -1,0 +1,86 @@
+{%extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}Welcome | {{ block.super }} {% endblock %}
+
+<style>
+{% block style %}
+.navbar-static-top {
+	margin-bottom: 0px !important;
+}
+.jumbotron {
+	background-color: #284d00;
+	color: #FFF;
+}
+
+{% endblock %}
+</style>
+
+
+{% block jumbotron %}
+{% if not request.user.is_authenticated %}
+<div class="jumbotron">
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6"> 
+		    <h1>Sample App</h1>
+		    <p>The try django project is designed to get your project started. The goal is to help you launch as soon as possible with the amount of investment using time and money. Join us today.</p>
+		    <p>
+		      <a class="btn btn-lg btn-primary" href="" role="button">Join us &raquo;</a>
+		    </p>
+		</div>
+		<div class="col-sm-6" style="background-color:black; height:315px;">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/topjvXzjdYM" frameborder="0" allowfullscreen></iframe>
+			<!-- <img src='http://image.slidesharecdn.com/vortragpub-091118044321-phpapp02/95/python-im-web-django-1-728.jpg?cb=1258519425' class="img-responsive" /> -->
+		</div>
+	</div>
+</div>
+</div>
+{% endif %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+{% if request.user.is_authenticated %}
+
+<h1>You are successfully logged in..!</h1>
+
+{% else %}
+
+<div class="row">
+    <div class="col-xs-3 pull-right">
+		<p class="lead text-align-center">{{ title }}</p>
+
+		<form method="POST", action="">{% csrf_token %}
+			{{ form|crispy }}
+			<input class="btn btn-lg btn-primary" type="submit" value="Sign Up" />
+		</form>
+    </div>
+	<div class="col-sm-3">
+		<p class="lead text-align-center">Django &amp; Bootstrap</p>	<img src="{% static 'img/beach.jpg' %}" class="img-responsive" />
+	</div>
+
+	<div class="col-sm-3">
+		<p class="lead text-align-center">Created for Starters<br><br>
+			<i class="fa fa-laptop fa-5x"></i>
+		</p>
+	</div>
+
+	<div class="col-sm-3">
+		<p class="lead text-align-center">Always open source<br><br>
+			<span class="fa-stack fa-lg fa-4x">
+			  <i class="fa fa-circle-o-notch fa-stack-2x"></i>
+			  <i class="fa fa-github fa-stack-1x"></i>
+			</span>
+		</p>	
+	</div>
+</div>
+{% endif %}
+</div>
+
+{% endblock %} 

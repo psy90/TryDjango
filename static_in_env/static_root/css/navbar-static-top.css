@@ -1,0 +1,33 @@
+body {
+  min-height: 1000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 19px;
+  background-color: #2b2b2b;
+  border-color: #284d00;
+}
+
+.navbar-default .navbar-brand {
+	color: #FFF;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #0080ff;
+}
+
+
+
+.navbar-default .navbar-nav > li > a {
+	color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color: #0080ff;
+}
+
+.navbar-brand > img {
+  	display: block;
+    height: 50px;
+    margin-top: -15px;
+}
